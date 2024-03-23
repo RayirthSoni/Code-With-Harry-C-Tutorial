@@ -1,0 +1,615 @@
+lecture 1
+if not using namespace std;
+used then we will use cout like 
+
+std::cout<<"lorem*100";
+
+lecture 2
+
+
+lecture 3 
+single line comment like
+// 
+multiline comment like 
+/* body */
+
+lecture 4 
+in order to declare global variable we do it out of main function 
+for bool flag=true;
+cout will print 1
+for true --> 1 is printed 
+for false --> 0 is printed
+
+lecture 5
+input --> cin    --> >> is extraction operator
+output --> cout  --> << is insertion operator
+
+lecture 6
+to include user defined file we do
+#include "this.h"
+a++ / a--  --> this will print first then increment/decrement
+++a / --a  --> this will increment/decrement first then print
+
+lecture 7
+to print global variable we do 
+cout<<::(variable name);
+typecasting will be like 
+int(c)  or  (int)c
+sizeof() will give size of whatever we type in parenthesis
+we mention whether literal is float double etc using 34.3f or 34.4F etc
+
+lecture 8
+to declare a constant we use
+const keyword
+setw is present in iomanip this will mention widhth of whatever we type
+
+lecture 9
+switch(expression)
+{
+    case :
+    break;
+    case:
+    break;
+    default:
+    break;
+}
+
+lecture 10
+--> for loop
+    for(intialization;condition;upgradation){
+        body;
+    }
+--> infinte for loop
+    for(i=0;34<40;i++){
+        body;
+    }
+
+--> while loop
+    while(condition){
+        body;
+    }
+
+--> infinte while loop
+    while(true){
+        body;
+    }
+
+--> do-while loop
+    do{
+        body;
+    }while(condition);
+
+--> do-while at least once
+    do{
+
+    }while(false);
+
+--> do-while infinte
+    do{
+
+    }while(true);
+
+
+lecture 11
+continue;
+break;
+
+lecture 12
+what is pointer ?
+data type which holds address of other data type
+
+int a=5;
+int* b=&a;
+& --> Address Operator
+--> if you want to print address of a we can use
+    &a
+    b
+* --> Dereference Operator
+--> if you want to print value stored at a we can use
+    a
+    *b
+
+Pointer to Pointer
+int **c=&b;
+
+--> if you want to print address of b we can use
+    &b
+    c
+
+--> if you want to print value at c
+    *c
+    b
+
+--> if you want to print value at value at address of c
+    **c
+    *b
+    a
+
+lecture 13
+
+WAY 1 OF DECLARING ARRAY
+int marks[4]={10,20,30,40};
+
+WAY 2 OF DECLARING ARRAY
+int marks[4];
+marks[0]=10;
+marks[1]=20;
+marks[2]=30;
+marks[3]=40;
+
+WAY 3 OF DECLARING ARRAY
+using for, while, do-while loops
+
+--> we can change value stored at particluar index of array like
+marks[0]=10;
+marks[1]=20;
+marks[0]=2990; value will be upgraded to this
+
+
+
+--> Pointer and array
+int marks[4]={10,20,30,40};
+int *k=marks;
+
+PRINTING ADDRESS WITHOUT POINTER VARIABLE
+(marks+i)
+&marks[i]
+
+PRINTING ADDRESS WITH POINTER
+(k+i)
+
+PRINTING VALUE WITHOUT POINTER VARIABLE
+*(marks+i)
+marks[i]
+
+PRINTING VALUE WITH POINTER VARIABLE
+*(k+i)
+
+lecture 14
+
+struct 
+
+typedef struct employee{
+    int age;
+    char favChar;
+    float salary
+}emp;
+
+ syntax for struct
+struct employee
+{
+     int eId;
+     float salary;
+     char favChar;
+};
+typedef is optional thing we use it to create a shortcut for the name otherwise we will have to use like
+struct employee rayirth;
+if we use typedef and create a name we can do like
+emp rayirth; rather than struct employee rayirth
+
+union
+union is like struct but with better memory management
+here max memory is reserved like 4 and if we use lesser than that then memory allocated accordingly
+
+union money
+{
+    int rice;       // 4
+    float pounds;   // 4
+    char car;       // 1
+};
+
+ union money m1;
+ m1.car='5';
+ m1.pounds=55555;
+ at a time only one can be used that's why when we tried printing m1.car we got garbage value but we will get answer if we print
+ pounds. only one can be printed because memory is being shared by all here
+ cout<<m1.pounds<<endl;
+
+enum
+            0         1     2
+enum meal{breakfast,lunch,dinner};
+meal m1 = lunch;
+
+lecture 15
+Functions
+we write functions like
+
+int sum(int a,int b)
+{
+    return a+b;
+}
+
+this is function prototype if we type function after main function we tell the compiler certain function would be used like here,
+int sum(int a,int b); --> acceptable
+int sum(int,int); --> acceptable
+int sum(int a, b); --> not acceptable
+void print(void);  --> acceptable
+void print();      --> acceptable
+
+int main()
+{
+    // body;
+    print();
+}
+
+int sum()
+{
+    return a+b;
+}
+
+void print(){
+    cout<<"Hello World";
+}
+
+lecture 16
+
+swap(int x,int z)
+{
+
+}
+
+swapPointer(int* x ,int* y)
+{
+
+}
+
+swapRefernce(int &y,int &z)
+{
+
+}
+
+int main()
+{
+    int a,b;
+    swap(a,b);
+    swapPointer(&a,&b);
+    swapRefernce(a,b);
+}
+
+lecture 17
+in product function first actual parameters value is copied to formal parameter then formal parameter stored in register then function
+executed then return but in inline int product inl function using inline keyword we can do it such a way that return statement directly
+executed which is quicker also inline is a request to compiler
+inline recommended not be used in recursion,looping,switch statements etc also inline should not be used frequently as it fills cache
+memory so if cache memory gets filled it will lead to crashing of programming
+
+int product(int x, int y)
+{
+    return x * y;
+}
+
+inline int productinl(int k, int l)
+{
+    static int c=0;                         // static is a keyword, here this line will be executed only once
+    c=c+1;                                  // next time when we will run this function,value of c would be retained
+    return (k * l)+c;
+}
+
+// all constant arguments are declared at last else program might give error
+float moneyReceived(int currentMoney, float factor = 1.04)
+{
+    return currentMoney * factor;
+}
+
+int main()
+{
+    int a, b;
+    cout << "First Number : ";
+    cin >> a;
+    cout << "Second Number : ";
+    cin >> b;
+    cout<<"Product of "<<a<<" and "<<b<<"using product is "<<product(a,b)<<endl;
+    cout<<endl<<endl;
+    cout<<"Product of "<<a<<" and "<<b<<"using inline prodcuct is "<<productinl(a,b)<<endl;
+    int money;
+    cout<<"Money : ";
+    cin >> money;
+    cout << "The money deposited was " << money << " now after 1 year money you would get would be : " << moneyReceived(money)<<endl;
+    cout << "In case you are VIP The money deposited was " << money << " now after 1 year money you would get would be : " << moneyReceived(money, 1.1)<<endl;
+
+lecture 18
+Recursion
+
+int factorial(int n)
+{
+    if(n<=1){
+        return 1;
+    }
+    return n*factorial(n-1);
+}
+
+Step by step process for factorial of 5
+factorial(5) = 5*factorial(4)
+factorial(5) = 5*4*factorial(3)
+factorial(5) = 5*4*3*factorial(2)
+factorial(5) = 5*4*3*2*factorial(1)
+factorial(5) = 5*4*3*2*1
+factorial(5) = 120
+
+int fibonacci(int n)
+{
+    if(n<2){
+        return 1;
+    }
+    return (fibonacci(n-1)+fibonacci(n-2));
+}
+
+lecture 19
+We can create multiple function with same name with different arguments in C++ like
+
+// sum for 2 arguments
+int sum(int x,int y)
+{
+    cout<<" using 2 arguments is ";
+    return (x+y);
+}
+
+// sum for 3 arguments
+int sum(int x,int y,int z)
+{
+    cout<<" using 3 arguments is ";
+    return (x+y+z);
+}
+
+// volume for cube
+float volume(float a)
+{
+    return (a*a*a);
+}
+
+// volume for cuboid
+float volume(float l,float b,float h)
+{
+    return (l*b*h);
+}
+
+// volume for cylinder
+float volume(float r,float h)
+{
+    return (3.14*r*r*h);
+}
+
+int main()
+{
+        int a,b,c;
+    float cube_side,cuboid_length,cuboid_breadth,cuboid_height,cylinder_radius,cylinder_height;
+    cout<<"First Number : ";
+    cin>>a;
+    cout<<"Second Number : ";
+    cin>>b;
+    cout<<"Third Number : ";
+    cin>>c;
+    cout<<"The sum of "<<a<<" & "<<b<<sum(a,b)<<endl;
+    cout<<"The sum of "<<a<<","<<b<<" & "<<c<<sum(a,b,c)<<endl<<endl<<endl;
+    cout<<"Length of cube's side is ";
+    cin>>cube_side;
+    cout<<"Volume of cube is "<<volume(cube_side)<<endl<<endl<<endl;
+    cout<<"Length of cuboid is ";
+    cin>>cuboid_length;
+    cout<<"Breadth of cuboid is ";
+    cin>>cuboid_breadth;
+    cout<<"Height of cuboid is ";
+    cin>>cuboid_height;
+    cout<<"Volume of cuboid is "<<volume(cuboid_length,cuboid_breadth,cuboid_height)<<endl<<endl<<endl;
+    cout<<"Radius of cylinder is ";
+    cin>>cylinder_radius;
+    cout<<"Height of cylinder is ";
+    cin>>cylinder_height;
+    cout<<"Volume of cylinder is "<<volume(cylinder_radius,cylinder_height)<<endl<<endl<<endl;
+    return 0;
+}
+
+lecture 20
+Can create class like
+class Employee
+{
+    private :                             // these can only be accessed in class
+    int a,b,c;
+    public :
+    int d,e;                              // these can be accessed anywhere
+    void setData(int a,int b,int c);            // Declaration
+    void getData(){
+        cout<<"The value of a is "<<a<<endl;
+        cout<<"The value of b is "<<b<<endl;
+        cout<<"The value of c is "<<c<<endl;
+        cout<<"The value of d is "<<d<<endl;
+        cout<<"The value of e is "<<e<<endl;
+    }
+};
+
+void Employee :: setData(int x,int y,int z){
+    a=x;
+    b=y;
+    c=z;
+}
+
+int main()
+{
+    Employee Ray;
+    // Ray.a=23  --> This will throw error as a is private
+    Ray.d=22;
+    Ray.e=33;
+    Ray.setData(1,2,3);
+    Ray.getData();
+    return 0;
+}
+
+lecture 21
+agar ham bina private ya public mention kiye class mein likhte hain data members and member functoins then by default vo private
+hote hain
+ek member function ko nest kiya jaa sakta hai
+private data members and member functions ko main mein access nahi kiya jaa sakta vo sirf baki class ke elements access kar sakte hain
+
+lecture 22
+arrays bhi data member ho sakte hain
+member function and data member ka name alag preferably
+agar kisi function ko class mein declare kiya aur class ke bahar uska code likh rahe hain tooh ham aise karenge
+
+dataType className:: functionName()
+{
+
+}
+class ke bahar
+
+lecture 23
+THIS IS ABOUT STATIC VARIABLE
+
+static ki default value of 0
+static lagane se saare variable ek he count ko share karenge
+agar static ki value kisi specific number jaise 1000 se shuru karni hai tooh uski value bahar define karenge
+int employee:: count=1000;
+static variable class ka variable hota hai naaki objects ka usse declare aur define karte hain hamesha
+static int count;
+out of class we will write
+int employee::count=100;
+void getCount()
+{
+    code  
+}
+employee ray;
+ray.getCount();
+
+class employee
+{
+    int ID;
+    static int count;
+    public:
+    void setData();
+    void getData();
+    static void getCount();
+};
+
+void employee::setData()
+{
+    cout<<"Enter the value of ID : ";
+    cin>>ID;
+    count++;
+}
+
+void employee:: getData()
+{
+    cout<<"The ID of the employee is "<<ID<<" and the count of the employee is "<<count<<endl;
+}
+
+void employee:: getCount()
+{
+    cout<<"The value of count is "<<count<<endl;
+}
+
+int employee:: count=1000;
+
+int main()
+{
+    employee ray;
+
+    ray.setData();
+    ray.getCount();
+    ray.getData();
+
+    return 0;
+}
+
+lecture 24
+we can also use objects arrays
+class Employee
+{
+
+};
+
+int main()
+{
+    employee fb[count];
+}
+
+
+CLASS OBJECTS CAN BE WRITTEN INSIDE MEMBER FUNCTIONS
+class complex
+{
+    void setData(int r,int i);
+    void setDataBySum(complex c1,complex c2)
+    {
+
+    }
+    void printNumber()
+    {
+        cout<<"The value of complex number is"<<endl;
+    }
+};
+
+lecture 25,26,27
+Here we have studied friend functions
+friend functions are not class member function but they can use private and public specifier
+they can be normal functions which are not part of class or can be functions which are part of class
+
+suppose void add(int a,int b);
+function we want to make this friend function and this function is not part of class
+class complex
+{
+    friend void add(int,int);
+};
+
+int main()
+{
+    add(10,20)
+    return 0;
+}
+we will do like this friend keyword will be used
+function would be declared inside class and defined outside the class
+
+now if there are 2 classes and there is a friend function or any function whose arguments are class objects then there would be
+forward declaration of one class as compiler goes line by line so when compiler sees function and one class not seen before that's why
+class already in forward declaration
+
+class a
+{
+    friend void add(a,b);
+};
+
+class b
+{
+    friend void add(a,b);
+};
+
+void add(a o1,b o2)
+{
+    cout<< o1.data + o2.num ;
+}
+
+class complex
+{
+    int a;
+    int b;
+    friend complex sumComplex(complex,complex);
+    public:
+        void setData();
+        void getData();
+}
+
+complex sumComplex(complex,complex)
+{
+     code
+}
+
+class complex
+{
+    friend void calculator::sumRealComponents(complex,complex);
+    friend void calculator::sumImaginaryComponents(complex,complex);
+};
+
+class calculator
+{
+    public:
+    void add();
+    void sumRealComponents(complex,complex);
+    void sumImaginaryComponents(complex,complex);
+}
+
+void calculator::sumRealComponents(complex,complex)
+{
+    code;
+}
+
+void calculator::sumImaginaryComponents(complex,complex)
+{
+    code;
+}
